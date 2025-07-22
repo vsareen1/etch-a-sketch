@@ -37,8 +37,12 @@ p {
     border-style: solid;
     border-radius: 12px;
     min-width: 504px;
+    min-height: 504px;
+    max-width: 504px;
     max-height: 504px;
     background-color: white;
     margin: 0 auto;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
