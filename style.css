@@ -1,0 +1,44 @@
+body {
+    background-color: rgb(160, 226, 226);
+}
+
+p {
+    font-size: 48px;
+    font-weight: 800;
+    text-align: center;
+}
+
+#main-container {
+    display: flex;
+    flex-direction: row;
+    height: 700px;
+}
+
+#config-container {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin: auto;
+}
+
+#config-container button {
+    font-size: 32px;
+    font-weight: 600;
+    border-radius: 12px;
+    width: 200px;
+    border-color: teal;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#sketch-container {
+    border-width: 10px;
+    border-color: teal;
+    border-style: solid;
+    border-radius: 12px;
+    min-width: 504px;
+    max-height: 504px;
+    background-color: white;
+    margin: 0 auto;
+
+}
