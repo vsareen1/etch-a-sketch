@@ -20,10 +20,29 @@ function addPixels(gridDiv, styleFunction, gridSize) {
         // Always need to create a new element so that it can be added to the list
         let newDiv = document.createElement('div');
         Object.assign(newDiv.style, styleFunction(gridSize));
+        // Assign a new class to the div to be used later on for adding event listeners
+        newDiv.classList.add('new-div');
+
         gridDiv.appendChild(newDiv);
     }
-    console.dir(gridDiv);
     return gridDiv;
+}
+
+function addColors (allDivs) {
+    // Function to add colors dynamically to all divs present inside the sketch box div
+    allDivs.forEach(function(div) {
+
+        div.addEventListener('mouseover', function () {
+            const red = Math.floor(Math.random() * 255);
+            const green = Math.floor(Math.random() * 255);
+            const blue = Math.floor(Math.random() * 255);
+
+            div.style.backgroundColor = `rgb(${red},${green},${blue})`;
+            div.style.opacity = `${Math.min(1, Number(div.style.opacity)+ 0.1)}`;
+        });
+    });
+
+    return allDivs;
 }
 
 let gridSize = 16;
@@ -38,8 +57,14 @@ gridButton.addEventListener('click', function() {
 
     let sketchContainer = document.querySelector('#sketch-container');
     // Reset the container
-    sketchContainer.innerHTML = ''; 
-    sketchContainer = addPixels(sketchContainer, getDivStyle, gridSize)
+    sketchContainer.innerHTML = '';
+    // Change the grid size
+    sketchContainer = addPixels(sketchContainer, getDivStyle, gridSize);
+
+    // Extract all divs and add event listeners
+    let allNewDivs = document.querySelectorAll('.new-div');
+    allNewDivs = addColors(allNewDivs);
+
 });
 
 
@@ -49,4 +74,12 @@ resetButton.addEventListener('click', function() {
     // Reset the container
     sketchContainer.innerHTML = '';
     sketchContainer = addPixels(sketchContainer, getDivStyle, 16);
+
+    // Extract all divs and add event listeners
+    let allNewDivs = document.querySelectorAll('.new-div');
+    allNewDivs = addColors(allNewDivs);  
 });
+
+// Extract all divs and add event listeners
+let allNewDivs = document.querySelectorAll('.new-div');
+allNewDivs = addColors(allNewDivs);
